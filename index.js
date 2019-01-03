@@ -1,15 +1,18 @@
-const { set, get } = require('./lib')
+const { 
+  set,
+  stringify 
+} = require('./lib');
+
 
 function JMON(data) {
-  this.data  =  data
+  this.data = data
 }
 
+// Replaces the current data with input data
 JMON.prototype.set = set;
 
-JMON.prototype.get = get
+// Stringifies the data and returns
+JMON.prototype.stringify = stringify;
 
-JMON.prototype.print = function() {
-  console.log(this)
-}
 
 module.exports = JMON
