@@ -1,6 +1,5 @@
 {
-  "name": "ak-url-validate",
-  "description": "[![Build Status](https://api.travis-ci.com/arshadkazmi42/ak-url-valdiate.svg?branch=master)](https://api.travis-ci.com/arshadkazmi42/ak-url-valdiate)",
+  "name": "JMON",
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
