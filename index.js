@@ -1,4 +1,4 @@
-const {
+var {
   set,
   stringify,
 } = require('./lib');
