@@ -3,17 +3,17 @@ const JMON = require('../index');
 
 const SAMPLE_JSON = {
   'JMON': {
-    name: 'JMON',
-    author: 'Bibek',
-    url: 'https://github.com/bibekluitel/JMON'
+    'name': 'JMON',
+    'author': 'Bibek',
+    'url': 'https://github.com/bibekluitel/JMON'
   }
 };
 
 const SAMPLE_JSON_TWO = {
   'JMON_TWO': {
-    name: 'JMON_TWO',
-    author: 'Bibek_TWO',
-    url: 'https://github.com/bibekluitel/JMON_TWO'
+    'name': 'JMON_TWO',
+    'author': 'Bibek_TWO',
+    'url': 'https://github.com/bibekluitel/JMON_TWO'
   }
 };
 
