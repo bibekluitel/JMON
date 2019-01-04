@@ -1,11 +1,11 @@
-const { 
+const {
   set,
-  stringify 
+  stringify,
 } = require('./lib');
 
 
 function JMON(data) {
-  this.data = data
+  this.data = data;
 }
 
 // Replaces the current data with input data
@@ -15,4 +15,4 @@ JMON.prototype.set = set;
 JMON.prototype.stringify = stringify;
 
 
-module.exports = JMON
+module.exports = JMON;
