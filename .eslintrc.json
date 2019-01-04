@@ -4,9 +4,7 @@
     "mocha": true
   },
   "parserOptions": {
-    "ecmaFeatures": {
-        "experimentalObjectRestSpread": true
-    },
+    "ecmaFeatures": true,
     "sourceType": "module"
   },
   "extends": "strongloop",
