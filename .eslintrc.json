@@ -1,0 +1,17 @@
+{
+  "env": {
+    "node": true,
+    "mocha": true
+  },
+  "parserOptions": {
+    "ecmaFeatures": {
+        "experimentalObjectRestSpread": true
+    },
+    "sourceType": "module"
+  },
+  "extends": "strongloop",
+  "rules": {
+    "quote-props": [2, "always", { "keywords": true }],
+    "max-len": ["error", { "code": 100, "tabWidth": 2, "ignoreTemplateLiterals": true  }]
+  }
+}

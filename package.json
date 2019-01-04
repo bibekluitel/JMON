@@ -3,10 +3,13 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
+    "pretest": "eslint --ignore-path .gitignore .",
     "test": "node_modules/mocha/bin/mocha test/test.js"
   },
   "devDependencies": {
     "chai": "^4.2.0",
+    "eslint": "^5.11.1",
+    "eslint-config-strongloop": "^2.1.0",
     "mocha": "^5.2.0"
   },
   "repository": {
@@ -18,5 +21,6 @@
   "bugs": {
     "url": "https://github.com/bibekluitel/JMON/issues"
   },
-  "homepage": "https://github.com/bibekluitel/JMON#readme"
+  "homepage": "https://github.com/bibekluitel/JMON#readme",
+  "dependencies": {}
 }
