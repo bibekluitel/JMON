@@ -10,8 +10,6 @@
     "chai": "^4.2.0",
     "eslint": "^5.11.1",
     "eslint-config-strongloop": "^2.1.0",
-    "eslint-plugin-jsx-a11y": "^6.1.2",
-    "eslint-plugin-react": "^7.12.2",
     "mocha": "^5.2.0"
   },
   "repository": {
@@ -24,7 +22,5 @@
     "url": "https://github.com/bibekluitel/JMON/issues"
   },
   "homepage": "https://github.com/bibekluitel/JMON#readme",
-  "dependencies": {
-    "eslint-config-airbnb": "^17.1.0"
-  }
+  "dependencies": {}
 }
