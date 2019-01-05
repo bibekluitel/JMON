@@ -9,11 +9,21 @@ var SAMPLE_JSON = {
   },
 };
 
-var SAMPLE_JSON_TWO = {
-  'JMON_TWO': {
-    'name': 'JMON_TWO',
-    'author': 'Bibek_TWO',
-    'url': 'https://github.com/bibekluitel/JMON_TWO',
+// var SAMPLE_JSON_TWO = {
+//   'JMON_TWO': {
+//     'name': 'JMON_TWO',
+//     'author': 'Bibek_TWO',
+//     'url': 'https://github.com/bibekluitel/JMON_TWO',
+//   },
+// };
+
+var SAMPLE_JSON_3 = {
+  'JMON': {
+    'name': {
+      'people': 'bibek',
+    },
+    'author': 'Bibek',
+    'url': 'https://github.com/bibekluitel/JMON',
   },
 };
 
@@ -24,8 +34,8 @@ var SAMPLE_JSON_STIRNGIFIED = `{"JMON":{"name":"JMON","author":"Bibek","url":"ht
 describe('Verifies the set and get operations', function() {
   it('Prints Set Value', function() {
     var jmon = new JMON(SAMPLE_JSON);
-    jmon.set(SAMPLE_JSON_TWO);
-    expect(jmon.data).to.deep.equal(SAMPLE_JSON_TWO);
+    jmon.set('JMON.name.people', 'bibek');
+    expect(jmon.currentData).to.deep.equal(SAMPLE_JSON_3);
   });
 });
 

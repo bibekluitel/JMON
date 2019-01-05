@@ -6,6 +6,7 @@ var {
 
 function JMON(data) {
   this.data = data;
+  this.currentData = JSON.parse(JSON.stringify(data));
 }
 
 // Replaces the current data with input data
