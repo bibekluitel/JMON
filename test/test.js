@@ -31,6 +31,15 @@ describe('Verifies the set and get operations', function() {
   });
 });
 
+describe('Verifies commit functionality', function(){
+  it('Commits the current changes', function() {
+    var jmon = new JMON(SAMPLE_JSON);
+    jmon.set('JMON.name.people', 'bibek');
+    jmon.commit();
+    expect(jmon.initialData).to.deep.equal(SAMPLE_JSON_3);
+  });
+});
+
 // Add test related to printing and formatting operations
 describe('Verify printing related operations', () => {
   it('should match the returned stringified response with defined stringified value', () => {
