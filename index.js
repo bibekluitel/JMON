@@ -10,12 +10,11 @@ var {
 function JMON(data) {
 
   this.initialData = data;
-  this.data = _.cloneDeep(data);
+  this.data = _.cloneDeep(this.initialData);
 
-  // Containers
-  this.createdList = [];
-  this.updatedList = [];
-  this.deleteList = [];
+  this.isCreated = false;
+  this.isUpdated = false;
+  this.isDeleted = false;
 }
 
 // Replaces the current data with input data
