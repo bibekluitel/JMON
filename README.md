@@ -41,7 +41,6 @@ input => JMON({
 })
 ```
 
-
 ## Usage
 ```javascript
 var a = input.get('class');
@@ -59,4 +58,16 @@ input => JMON({
     })
   })
 })
+```
+
+## Prototype Structure
+
+```
+JMON.protoType.isCreated= bool
+
+JMON.protoType.isEdited = bool
+
+JMON.protoType.get= func() ;
+
+JMON.protoTYpe.set= func();
 ```
