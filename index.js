@@ -6,20 +6,22 @@ var {
   get,
 } = require('./lib');
 
+function isObject(data) {
 
-function JMON(data) {
   var type = Object.prototype.toString.call(data);
 
-  var isObject = (
+  return (
     type === '[object Object]' ||
     type === '[object Array]'
   );
+}
 
-  if (!isObject){
-    this.initialData = data;
-    this.data = data;
+function JMON(data) {
+
+  if (!isObject(data)){
+    console.error('Data provided is not a JSON');
     return;
-  }
+  };
 
   this.initialData = data;
   this.data = _.cloneDeep(this.initialData);
@@ -29,7 +31,10 @@ function JMON(data) {
 
     // intialize all the properties
     keys.forEach((key) => {
-      this.data[key] = new JMON(this.data[key]);
+      if (isObject(this.data[key])){
+
+        this.data[key] = new JMON(this.data[key]);
+      };
     });
   };
 }
