@@ -3,11 +3,19 @@ var _ = require('lodash');
 var {
   commit,
   set,
-  stringify,
+  get,
 } = require('./lib');
 
 
 function JMON(data) {
+  var type = Object.prototype.toString.call(data);
+
+  var isObject = (
+    type === '[object Object]' ||
+    type === '[object Array]'
+  );
+
+  if (!isObject) return;
 
   this.initialData = data;
   this.data = _.cloneDeep(this.initialData);
@@ -15,16 +23,18 @@ function JMON(data) {
   this.isCreated = false;
   this.isUpdated = false;
   this.isDeleted = false;
+
+  if (isObject){
+    var keys = Object.keys(this.data);
+    // intialize all the properties
+    this.set = set;
+    this.get = get;
+    this.commit = commit;
+
+    keys.forEach((key) => {
+      this.data[key] = new JMON(this.data[key]);
+    });
+  };
 }
-
-// Replaces the current data with input data
-JMON.prototype.set = set;
-
-// Stringifies the data and returns
-JMON.prototype.stringify = stringify;
-
-// Commits the current changes
-JMON.prototype.commit = commit;
-
 
 module.exports = JMON;
