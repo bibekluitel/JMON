@@ -12,7 +12,6 @@ var SAMPLE_JSON = {
 describe('VCOnstructor Test', function() {
   it('Compare Constructor Object', function() {
     var jmon = new JMON(SAMPLE_JSON);
-    console.log(jmon.set);
     expect(typeof (jmon.set)).to.be.equal('function');
   });
 });
