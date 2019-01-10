@@ -6,19 +6,23 @@ var {
   get,
 } = require('./lib');
 
-function isObject(data) {
-
-  var type = Object.prototype.toString.call(data);
-
-  return (
-    type === '[object Object]' ||
-    type === '[object Array]'
-  );
-}
 
 function JMON(data) {
 
+  function isObject(data) {
+
+    var type = Object.prototype.toString.call(data);
+
+    return (
+      type === '[object Object]' ||
+      type === '[object Array]'
+    );
+  }
+
   if (!isObject(data)){
+
+    // If data provided is not a JSON, The JMON will not be Initialized.  
+    // This library will not handle data other than a JSON Object
     console.error('Data provided is not a JSON');
     return;
   };
@@ -27,6 +31,7 @@ function JMON(data) {
   this.data = _.cloneDeep(this.initialData);
 
   if (isObject){
+
     var keys = Object.keys(this.data);
 
     // intialize all the properties
