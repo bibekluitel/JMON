@@ -4,20 +4,12 @@ var {
   commit,
   set,
   get,
+  isObject,
+
 } = require('./lib');
 
 
 function JMON(data) {
-
-  function isObject(data) {
-
-    var type = Object.prototype.toString.call(data);
-
-    return (
-      type === '[object Object]' ||
-      type === '[object Array]'
-    );
-  }
 
   if (!isObject(data)){
 
@@ -30,19 +22,14 @@ function JMON(data) {
   this.initialData = data;
   this.data = _.cloneDeep(this.initialData);
 
-  if (isObject){
+  Object.keys(this.data).forEach((key) => {
+    if (isObject(this.data[key])){
 
-    var keys = Object.keys(this.data);
-
-    keys.forEach((key) => {
-      if (isObject(this.data[key])){
-
-        // For every key that has a object as value
-        // Recursion should be applied to initialized the JMON structure.
-        this.data[key] = new JMON(this.data[key]);
-      };
-    });
-  };
+      // For every key that has a object as value
+      // Recursion should be applied to initialized the JMON structure.
+      this.data[key] = new JMON(this.data[key]);
+    };
+  });
 }
 
 JMON.prototype.isCreated = false;
