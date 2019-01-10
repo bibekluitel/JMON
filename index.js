@@ -2,10 +2,10 @@ var _ = require('lodash');
 
 var {
   commit,
-  set,
   get,
   isObject,
-
+  push,
+  set,
 } = require('./lib');
 
 
@@ -15,8 +15,8 @@ function JMON(data) {
 
     // If data provided is not a JSON, The JMON will not be Initialized.
     // This library will not handle data other than a JSON Object.
-    console.error('Data provided is not a JSON');
-    return;
+    console.error(`${data} is not a JSON`);
+    return false;
   };
 
   this.initialData = data;
@@ -35,8 +35,10 @@ function JMON(data) {
 JMON.prototype.isCreated = false;
 JMON.prototype.isUpdated = false;
 JMON.prototype.isDeleted = false;
-JMON.prototype.set = set;
-JMON.prototype.get = get;
 JMON.prototype.commit = commit;
+JMON.prototype.get = get;
+JMON.prototype.push = push;
+JMON.prototype.set = set;
+
 
 module.exports = JMON;
