@@ -9,12 +9,11 @@ var SAMPLE_JSON = {
   },
 };
 
-describe('VCOnstructor Test', function() {
-  it('Compare Constructor Object', function() {
-    var jmon = new JMON(SAMPLE_JSON);
-    expect(typeof (jmon.set)).to.be.equal('function');
-  });
-});
+var SAMPLE_JSON_1 = {
+  'name': 'JMON',
+  'author': 'Arshad',
+  'url': 'https://github.com/bibekluitel/JMON',
+};
 
 // var SAMPLE_JSON_3 = {
 //   'JMON': {
@@ -27,19 +26,49 @@ describe('VCOnstructor Test', function() {
 // };
 
 // var SAMPLE_JSON_STIRNGIFIED = '{"JMON":{"name":"JMON","author":"Bibek",'
-//   + '"url":"https://github.com/bibekluitel/JMON"}}';
+// + '"url":"https://github.com/bibekluitel/JMON"}}';
 
+describe('VCOnstructor Test', function() {
+  it('Compare Constructor Object', function() {
+    var jmon = new JMON(SAMPLE_JSON);
+    expect(typeof (jmon.set)).to.be.equal('function');
+    expect(typeof (jmon.get)).to.be.equal('function');
+    expect(typeof (jmon.commit)).to.be.equal('function');
+    expect(typeof (jmon.push)).to.be.equal('function');
+    expect(jmon.isUpdated).to.be.false;
+    expect(jmon.isCreated).to.be.false;
+    expect(jmon.isDeleted).to.be.false;
+  });
+});
 
-// describe('Verifies the set and get operations', function() {
-//   it('Prints Set Value', function() {
-//     var jmon = new JMON(SAMPLE_JSON);
-//     var result = jmon.set('JMON.author', 'arshad');
-//     expect(result).to.true;
-//     expect(jmon.data).to.deep.equal(SAMPLE_JSON_3);
-//     result = jmon.set('JMON.no_author', 'arshad');
-//     expect(result).to.false;
-//   });
-// });
+describe('verifies the set and get operations', function() {
+  it('validates set string value', function() {
+    var jmon = new JMON(SAMPLE_JSON);
+    expect(jmon.get('JMON').data).to.deep.equal(SAMPLE_JSON.JMON);
+
+    var result = jmon.get('JMON').set('author', 'Arshad');
+    expect(result).to.true;
+    expect(jmon.isUpdated).to.true;
+    expect(jmon.get('JMON').data).to.deep.equal(SAMPLE_JSON_1);
+
+    result = jmon.set('JMON.no_author', 'arshad');
+    expect(result).to.false;
+  });
+
+  // it('validates set object value', function() {
+  //   var jmon = new JMON(SAMPLE_JSON);
+  //   expect(jmon.get('JMON').data).to.deep.equal(SAMPLE_JSON.JMON);
+
+  //   var result = jmon.get('JMON').set('name', { 'people': 'Arshad'});
+  //   expect(result).to.true;
+  //   expect(jmon.isUpdated).to.true;
+  //   console.log(result);
+  // expect(jmon.get('JMON').data).to.deep.equal(SAMPLE_JSON_1);
+
+  // result = jmon.set('JMON.no_author', 'arshad');
+  // expect(result).to.false;
+  // });
+});
 
 // describe('Verifies commit functionality', function(){
 //   it('Commits the current changes', function() {
