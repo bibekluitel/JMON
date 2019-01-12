@@ -1,73 +1,127 @@
 # JMON
 Javascript Mutable Object Notation
 
-Main idea behind this library to provide few functionalities over json.
+Main idea behind this library to provide few functionalities over default Javascript Objects.
 
-We are planning of creating a class which will take any json type datastructure and will keep a track of `edited`,  `deleted`, `created` data sets.
-Over this, it will provide functionalities to check and fetch the modified data.
+## Installation
 
-It will provide folowing functionalities
-- get() // Will be used for fetching the data from inside the hierarchy
-- set() // Set will update the value at input key, this will also track if data is updated
-- push() // Will be used to create new data key.
-- commit() // Will update the latest data to initial data and reset `edited`, `deleted`, `created` data sets.
-
-Approach, which we have thought about is we will keep every level as JMON object. 
-For example:
-
-```json
-input = {
-  "class": {
-    "title": "Class One",
-    "profile": {
-      "name": "name one"
-    }
-  }
-}
+#### Using npm
+```
+npm install JMON
 ```
 
-This json will be converted to
-a JMON object and every level will have a jmon
-
-```javascript
-input => JMON({
-  "class": JMON({
-    "title": "Class one",
-    "profile": JMON({
-        "name": "name one"
-      })
-    })
-  })
-})
+#### Using yarn
+```
+yarn add JMON
 ```
 
 ## Usage
+
 ```javascript
-var a = input.get('class');
-a.set('title', 'arshad');
+var JMON = require('JMON');
+
+const INPUT_DATA = {
+  'JMON': {
+    'name': 'JMON',
+    'author': 'Bibek',
+    'url': 'https://github.com/bibekluitel/JMON',
+  },
+};
+
+const jmonData = new JMON(INPUT_DATA);
+
+/**
+ * OUTPUT: jmonData
+ * ----------------
+ * 
+ * JMON({
+ *    initialData: {
+ *      'JMON': JMON({
+ *        initialData: {
+ *          'name': 'JMON',
+ *          'author': 'Bibek',
+ *          'url': 'https://github.com/bibekluitel/JMON',
+ *        },
+ *        data: {
+ *          'name': 'JMON',
+ *          'author': 'Bibek',
+ *          'url': 'https://github.com/bibekluitel/JMON',
+ *        },
+ *        'isCreated': false,
+ *        'isUpdated': false,
+ *        'isDeleted': false
+ *      }),
+ *    }
+ *    data: {
+ *      'JMON': JMON({
+ *        initialData: {
+ *          'name': 'JMON',
+ *          'author': 'Bibek',
+ *          'url': 'https://github.com/bibekluitel/JMON',
+ *        },
+ *        data: {
+ *          'name': 'JMON',
+ *          'author': 'Bibek',
+ *          'url': 'https://github.com/bibekluitel/JMON',
+ *        },
+ *        'isCreated': false,
+ *        'isUpdated': false,
+ *        'isDeleted': false
+ *      }),
+ *    }
+ *    'isCreated': false,
+ *    'isUpdated': false,
+ *    'isDeleted': false
+ * })
 ```
 
-JMON object, will be updated like this
-```javascript
-input => JMON({
-  "class": JMON({
-    "title": "Class one",
-    "profile": JMON({
-        "name": "arshad"
-      })
-    })
-  })
-})
-```
+## Features
 
-## Prototype Structure
+- **set()**: This function can be used to change any value at any key or add a new {key:value} in the JMON object
 
-```
-JMON.protoType.isCreated= bool
+  ##### Example  
 
-JMON.protoType.isEdited = bool
+  ```javascript
+  jmonData.get('JMON').set('name', 'Arshad');
 
-JMON.protoType.get= func() ;
+  // OR
 
-JMON.protoTYpe.set= func();
-```
+  jmonData.get('JMON').set('profile': { 'name': 'Arshad', 'role': 'Developer' });
+  ```
+
+- **get()**: This function can be used to fetch value at any level from the JMON object
+
+  ##### Examle
+
+  ```javascript
+  jmonData.get('JMON').get('name');
+
+  // OR 
+
+  jmonData.get('JMON.name');
+  ```
+
+- **isModified**: This function can be used to check if any level of the object is modified
+
+  ##### Example
+
+  ```javascript
+  jmon.isModified();
+
+  // OR
+
+  jmon.get('JMON.name').isMOdified();
+  ```
+
+- **commit**: This function can be used to commit you current changes, this basically clears all the tracks of changes and treats the changed values as initialValue of the JMON object. (It resets all the isModified flags)
+
+  ##### Example
+
+  ```javascript
+  jmon.commit();
+  ```
+
+## Contributing
+
+We are constantly working on improving JMON and we need all the help we can get. 
+You can contribute to this project by giving [suggestions](https://github.com/bibekluitel/JMON/issues/new?assignees=&labels=&template=custom.md&title=), fixing [open issues](https://github.com/bibekluitel/JMON/issues) or by implementing a new feature. Read our contibution guide [here](CONTIRBUTING.md)
