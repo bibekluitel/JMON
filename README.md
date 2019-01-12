@@ -1,7 +1,6 @@
-# JMON
-Javascript Mutable Object Notation
+# JMON (Javascript Mutable Object Notation)
 
-Main idea behind this library to provide few functionalities over default Javascript Objects.
+Main idea behind this library is to provide few functionalities over default Javascript Objects.
 
 ## Installation
 
@@ -79,7 +78,7 @@ const jmonData = new JMON(INPUT_DATA);
 
 - **set()**: This function can be used to change any value at any key or add a new {key:value} in the JMON object
 
-  ##### Example  
+  <br/><b>Example</b><br/>
 
   ```javascript
   jmonData.get('JMON').set('name', 'Arshad');
@@ -91,7 +90,7 @@ const jmonData = new JMON(INPUT_DATA);
 
 - **get()**: This function can be used to fetch value at any level from the JMON object
 
-  ##### Examle
+  <br/><b>Example</b><br/>
 
   ```javascript
   jmonData.get('JMON').get('name');
@@ -103,7 +102,7 @@ const jmonData = new JMON(INPUT_DATA);
 
 - **isModified**: This function can be used to check if any level of the object is modified
 
-  ##### Example
+  <br/><b>Example</b><br/>
 
   ```javascript
   jmon.isModified();
@@ -115,8 +114,8 @@ const jmonData = new JMON(INPUT_DATA);
 
 - **commit**: This function can be used to commit you current changes, this basically clears all the tracks of changes and treats the changed values as initialValue of the JMON object. (It resets all the isModified flags)
 
-  ##### Example
-
+  <br/><b>Example</b>
+  
   ```javascript
   jmon.commit();
   ```
@@ -124,4 +123,4 @@ const jmonData = new JMON(INPUT_DATA);
 ## Contributing
 
 We are constantly working on improving JMON and we need all the help we can get. 
-You can contribute to this project by giving [suggestions](https://github.com/bibekluitel/JMON/issues/new?assignees=&labels=&template=custom.md&title=), fixing [open issues](https://github.com/bibekluitel/JMON/issues) or by implementing a new feature. Read our contibution guide [here](CONTIRBUTING.md)
+You can contribute to this project by giving [suggestions](https://github.com/bibekluitel/JMON/issues/new?assignees=&labels=&template=custom.md&title=), fixing [open issues](https://github.com/bibekluitel/JMON/issues) or by implementing a new feature. Read our contibution guide [here](https://github.com/bibekluitel/JMON/CONTIRBUTING.md)
