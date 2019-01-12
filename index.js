@@ -45,7 +45,7 @@ JMON.prototype.commit = function() {
  * Returns true if self or any of children has been modified.
  * Returns false if nothing has been changed.
  */
-JMON.prototype.checkIfUpdated = function() {
+JMON.prototype.isModified = function() {
 
   return checkIfDirty(this);
 };
