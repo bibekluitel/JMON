@@ -1,6 +1,6 @@
 var _ = require('lodash');
 
-var { isObject, checkIfDirty } = require('./lib');
+var { isObject, isChildModified } = require('./lib');
 
 
 function JMON(data) {
@@ -47,7 +47,7 @@ JMON.prototype.commit = function() {
  */
 JMON.prototype.isModified = function() {
 
-  return checkIfDirty(this);
+  return isChildModified(this);
 };
 
 
@@ -90,7 +90,10 @@ JMON.prototype.set = function(key, value) {
 
   // If value is JSON
   _.set(this.data, key, new JMON(value));
+
+  // Setting isCreated value for the newly created child
   _.get(this.data, key).isCreated = true;
+
   return true;
 };
 

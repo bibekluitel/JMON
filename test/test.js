@@ -19,9 +19,9 @@ var TEST_JSON = {
   'people': 'Arshad',
 };
 
-describe('VCOnstructor Test', function() {
+describe('Constructor Test', function() {
 
-  it('Compare Constructor Object', function() {
+  it('verifies JMON object is built correctly', function() {
     var jmon = new JMON(SAMPLE_JSON);
 
     expect(typeof (jmon.set)).to.be.equal('function');
@@ -37,11 +37,9 @@ describe('verifies the set and get operations', function() {
 
   it('validates set string value', function() {
     var jmon = new JMON(SAMPLE_JSON);
-
     expect(jmon.get('JMON').data).to.deep.equal(SAMPLE_JSON.JMON);
 
     var result = jmon.get('JMON').set('author', 'Arshad');
-
     expect(result).to.true;
     expect(jmon.isUpdated).to.false;
     expect(jmon.get('JMON').isUpdated).to.true;
