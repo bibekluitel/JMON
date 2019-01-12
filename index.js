@@ -1,6 +1,6 @@
 var _ = require('lodash');
 
-var { isObject } = require('./lib');
+var { isObject, checkIfDirty } = require('./lib');
 
 
 function JMON(data) {
@@ -15,6 +15,9 @@ function JMON(data) {
 
   this.initialData = data;
   this.data = _.cloneDeep(this.initialData);
+  this.isCreated = false;
+  this.isUpdated = false;
+  this.isDeleted = false;
 
   Object.keys(this.data).forEach((key) => {
     if (isObject(this.data[key])){
@@ -26,12 +29,6 @@ function JMON(data) {
   });
 }
 
-
-JMON.prototype.isCreated = false;
-JMON.prototype.isUpdated = false;
-JMON.prototype.isDeleted = false;
-
-
 /**
  * This will commit current changes and treat current data as initial data
  * Also clears, createdList, deletedList, updatedList
@@ -39,9 +36,18 @@ JMON.prototype.isDeleted = false;
 JMON.prototype.commit = function() {
 
   this.initialData = _.cloneDeep(this.data);
-  Object.getPrototypeOf(this).isCreated = false;
-  Object.getPrototypeOf(this).isUpdated = false;
-  Object.getPrototypeOf(this).isDeleted = false;
+  this.isCreated = false;
+  this.isUpdated = false;
+  this.isDeleted = false;
+};
+
+/**
+ * Returns true if self or any of children has been modified.
+ * Returns false if nothing has been changed.
+ */
+JMON.prototype.isModified = function() {
+
+  return checkIfDirty(this);
 };
 
 
@@ -74,7 +80,7 @@ JMON.prototype.get = function(key) {
 JMON.prototype.set = function(key, value) {
 
   // Updating isUpdated flag.
-  Object.getPrototypeOf(this).isUpdated = true;
+  this.isUpdated = true;
 
   // If value is not JSON
   if (!isObject(value)) {
@@ -84,6 +90,7 @@ JMON.prototype.set = function(key, value) {
 
   // If value is JSON
   _.set(this.data, key, new JMON(value));
+  _.get(this.data, key).isCreated = true;
   return true;
 };
 
