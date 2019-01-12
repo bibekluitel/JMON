@@ -1,6 +1,6 @@
 {
-  "name": "JMON",
-  "version": "1.0.0",
+  "name": "jmon",
+  "version": "1.0.1",
   "main": "index.js",
   "scripts": {
     "pretest": "eslint --ignore-path .gitignore .",
@@ -24,5 +24,14 @@
   "homepage": "https://github.com/bibekluitel/JMON#readme",
   "dependencies": {
     "lodash": "^4.17.11"
-  }
+  },
+  "description": "Javascript Mutable Object Notation",
+  "directories": {
+    "lib": "lib",
+    "test": "test"
+  },
+  "keywords": [
+    "JSON",
+    "Mutable-JSON-Object"
+  ]
 }
