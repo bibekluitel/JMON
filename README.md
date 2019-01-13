@@ -6,18 +6,18 @@ Main idea behind this library is to provide few functionalities over default Jav
 
 #### Using npm
 ```
-npm install JMON
+npm install jmon
 ```
 
 #### Using yarn
 ```
-yarn add JMON
+yarn add jmon
 ```
 
 ## Usage
 
 ```javascript
-var JMON = require('JMON');
+var JMON = require('jmon');
 
 const INPUT_DATA = {
   'JMON': {
