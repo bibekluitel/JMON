@@ -123,4 +123,4 @@ const jmonData = new JMON(INPUT_DATA);
 ## Contributing
 
 We are constantly working on improving JMON and we need all the help we can get. 
-You can contribute to this project by giving [suggestions](https://github.com/bibekluitel/JMON/issues/new?assignees=&labels=&template=custom.md&title=), fixing [open issues](https://github.com/bibekluitel/JMON/issues) or by implementing a new feature. Read our contibution guide [here](https://github.com/bibekluitel/JMON/CONTIRBUTING.md)
+You can contribute to this project by giving [suggestions](https://github.com/bibekluitel/JMON/issues/new?assignees=&labels=&template=custom.md&title=), fixing [open issues](https://github.com/bibekluitel/JMON/issues) or by implementing a new feature. Read our contibution guide [here](https://github.com/bibekluitel/JMON/blob/master/CONTRIBUTING.md)
