@@ -109,7 +109,7 @@ const jmonData = new JMON(INPUT_DATA);
 
   // OR
 
-  jmon.get('JMON.name').isMOdified();
+  jmon.get('JMON.name').isModified();
   ```
 
 - **commit**: This function can be used to commit you current changes, this basically clears all the tracks of changes and treats the changed values as initialValue of the JMON object. (It resets all the isModified flags)
