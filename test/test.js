@@ -95,3 +95,12 @@ describe('Verifies commit functionality', function(){
 
   });
 });
+
+describe('Verifies non json object initialization', function() {
+
+  it('verifies JMON throws error if input is not a JSON Object', function() {
+    expect(() => new JMON(1231)).to.throw('Only JSON and Arrays of JSON are supported');
+    expect(() => new JMON('ashu')).to.throw('Only JSON and Arrays of JSON are supported');
+    expect(() => new JMON(true)).to.throw('Only JSON and Arrays of JSON are supported');
+  });
+});
