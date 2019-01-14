@@ -1,7 +1,7 @@
 {
   "name": "jmon",
   "description": "Javascript Mutable Object Notation",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "main": "index.js",
   "scripts": {
     "pretest": "eslint --ignore-path .gitignore .",

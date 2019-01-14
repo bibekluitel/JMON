@@ -68,7 +68,6 @@ JMON.prototype.get = function(key) {
   return sourceData;
 };
 
-
 /**
  * Check whether the key already exists or not.
  * If key does not exists then throw error saying use push function
@@ -79,22 +78,41 @@ JMON.prototype.get = function(key) {
  */
 JMON.prototype.set = function(key, value) {
 
-  // Updating isUpdated flag.
-  this.isUpdated = true;
+  if (!key || !value){
 
-  // If value is not JSON
-  if (!isObject(value)) {
-    _.set(this.data, key, value);
+    return false;
+  }
+
+  var keyList = key.split('.');
+
+  if (keyList.length === 1){
+
+    // If value is not JSON
+    if (!isObject(value)) {
+
+      _.set(this.data, key, value);
+      // Updating isUpdated flag.
+      this.isUpdated = !this.isCreated;
+      return true;
+    }
+
+    // If value is JSON
+    // we set isCreated flag after we created a new JMON Object
+    _.set(this.data, key, new JMON(value));
+    _.get(this.data, key).isCreated = true;
+
     return true;
   }
 
-  // If value is JSON
-  _.set(this.data, key, new JMON(value));
+  // if key is not present in data or value of key is falsy value
+  if (!_.get(this.data, _.first(keyList))) {
 
-  // Setting isCreated value for the newly created child
-  _.get(this.data, key).isCreated = true;
+    // create a new jmon object and assign it to
+    _.set(this.data, _.first(keyList), new JMON({}));
+    _.get(this.data, _.first(keyList)).isCreated = true;
+  }
 
-  return true;
+  return _.get(this.data, _.first(keyList)).set(keyList.slice(1).join('.'), value);
 };
 
 
