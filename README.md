@@ -73,7 +73,7 @@ const jmonData = new JMON(INPUT_DATA);
  *    'isDeleted': false
  * })
 ```
-
+<b>Important</b> JMON supports JSON and Arrays of JSON. Other types will throw an error.
 ## Features
 
 - **set()**: This function can be used to change any value at any key or add a new {key:value} in the JMON object

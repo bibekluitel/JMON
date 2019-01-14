@@ -10,8 +10,8 @@ function JMON(data) {
     // If data provided is not a JSON, The JMON will not be Initialized.
     // This library will not handle data other than a JSON Object.
     console.error(`${data} is not a JSON`);
-    return false;
-  };
+    throw new Error('Only JSON and Arrays of JSON are supported');
+  }
 
   this.initialData = data;
   this.data = _.cloneDeep(this.initialData);
