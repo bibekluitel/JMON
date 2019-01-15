@@ -4,11 +4,6 @@ Main idea behind this library is to provide few functionalities over default Jav
 
 ## Installation
 
-#### Using npm
-```
-npm install jmon
-```
-
 #### Using yarn
 ```
 yarn add jmon
