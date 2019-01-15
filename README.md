@@ -119,7 +119,7 @@ const jmonData = new JMON(INPUT_DATA);
   jmon.commit();
   ```
 ### Errors and Exception:
- - JMON initialization with any primitive types will throw an `Error`. <b>It only supports JSON and Arrays of JSON </b>
+ - JMON initialization with any primitive types will throw an `Error` object. <b>It only supports JSON and Arrays of JSON </b>
 
 ## Contributing
 
