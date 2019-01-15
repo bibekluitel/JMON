@@ -73,7 +73,6 @@ const jmonData = new JMON(INPUT_DATA);
  *    'isDeleted': false
  * })
 ```
-<b>Important</b> JMON supports JSON and Arrays of JSON. Other types will throw an error.
 ## Features
 
 - **set()**: This function can be used to change any value at any key or add a new {key:value} in the JMON object
@@ -119,6 +118,8 @@ const jmonData = new JMON(INPUT_DATA);
   ```javascript
   jmon.commit();
   ```
+### Errors and Exception:
+ - JMON initialization with any primitive types will throw an `Error` object. <b>It only supports JSON and Arrays of JSON </b>
 
 ## Contributing
 
